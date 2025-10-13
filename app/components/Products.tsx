@@ -1,5 +1,12 @@
 "use client";
-import { Box, Grid, Typography, Modal, IconButton, Button } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  Modal,
+  IconButton,
+  Button,
+} from "@mui/material";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useGetProductByCategoryQuery } from "../services/api";
@@ -12,8 +19,11 @@ type Props = {};
 
 function Products({}: Props) {
   const { selectedCategory } = useSelector((state: any) => state.products);
-  const { data: products, isLoading, isError } =
-    useGetProductByCategoryQuery(selectedCategory);
+  const {
+    data: products,
+    isLoading,
+    isError,
+  } = useGetProductByCategoryQuery(selectedCategory);
 
   const [open, setOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
@@ -32,26 +42,31 @@ function Products({}: Props) {
 
   const handleAdd = () => setQuantity((prev) => prev + 1);
   const handleRemove = () => setQuantity((prev) => (prev > 0 ? prev - 1 : 1));
-
   return (
     <>
-      <Grid container spacing={2} sx={{justifyContent:"center", mt:4}}>
+      <Grid container spacing={2} sx={{ justifyContent: "center", my: 4 }}>
         {products?.products?.map((product: any) => (
-          <Grid size={{ xs: 6, md: 2, sm: 4 }} key={product.id}>
+          <Grid
+            size={{ xs: 6, md: 2, sm: 4 }}
+            key={product.id}
+            sx={{ border: "1px solid #2d2d2d" }}
+          >
             <Box
               p={2}
-              border="1px solid #2d2d2d"
               borderRadius="5px"
               textAlign="center"
               sx={{
                 transition: "transform 0.2s ease",
-                "&:hover": { transform: "scale(1.05)", backgroundColor: "#f0f0f0" },
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  backgroundColor: "#f0f0f0",
+                },
                 cursor: "pointer",
               }}
               onClick={() => handleOpen(product)}
             >
-              <img
-                src={product.thumbnail}
+              <Image
+                src={product?.thumbnail}
                 alt={product.title}
                 width={500}
                 height={500}
@@ -62,7 +77,8 @@ function Products({}: Props) {
                   marginBottom: "10px",
                   borderRadius: "5px",
                 }}
-              />
+              ></Image>
+
               <Typography variant="body1" fontWeight="bold">
                 {product.title}
               </Typography>
@@ -109,7 +125,12 @@ function Products({}: Props) {
                 ${selectedProduct.price}
               </Typography>
 
-              <Box display="flex" justifyContent="center" alignItems="center" mb={3}>
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                mb={3}
+              >
                 <IconButton onClick={handleRemove}>
                   <RemoveIcon />
                 </IconButton>
