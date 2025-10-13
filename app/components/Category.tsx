@@ -38,7 +38,19 @@ function Category({ category, index }: CategoryProps) {
       <Grid
         onClick={() => dispatch(setSelectedCategory(category.slug))}
         size={{ xs: 6, md: 2, sm: 4 }}
-        sx={{ background: isActive ? "lightgray" : "skyblue" }}
+        sx={{ background: isActive ? "lightgray" : "skyblue",position:"relative",
+          "&::before":{
+            content:"''",
+            display: isActive? "block" : "none",
+            border: "25px solid transparent",
+            borderTopColor: isActive ? "lightgray" : "skyblue",
+            position:"absolute",
+            bottom: "-26%",
+            left: "35%"
+            // transform: "rotate(45deg)"
+          }
+         }}
+
       >
         <Box display="flex" flexDirection="column" alignItems="center" p={3}>
           <Image
