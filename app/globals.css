@@ -1,0 +1,9 @@
+.image-slider-container .slick-prev{
+  left: 3rem;
+}
+.image-slider-container .slick-next{
+  right: 3rem;
+}
+.image-slider-container .slick-next, .image-slider-container .slick-prev {
+  z-index: 1;
+}
