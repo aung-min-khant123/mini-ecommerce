@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedCategory } from "../services/productSlice";
 import { Grid3x3 } from "@mui/icons-material";
+import Categories from "./Categories";
 
 type CategoryType = {
   name: string;
@@ -45,7 +46,7 @@ function Category({ category, index }: CategoryProps) {
             border: "25px solid transparent",
             borderTopColor: isActive ? "lightgray" : "skyblue",
             position:"absolute",
-            bottom: "-26%",
+            bottom: "-2.5rem",
             left: "35%"
             // transform: "rotate(45deg)"
           }
@@ -54,7 +55,7 @@ function Category({ category, index }: CategoryProps) {
       >
         <Box display="flex" flexDirection="column" alignItems="center" p={3}>
           <Image
-            src={category.image}
+            src={categories}
             alt={category.name}
             width={500}
             height={500}

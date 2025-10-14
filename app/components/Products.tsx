@@ -73,9 +73,9 @@ function Products({}: Props) {
                 style={{
                   width: "100%",
                   height: "150px",
-                  objectFit: "cover",
+                  objectFit: "contain",
                   marginBottom: "10px",
-                  borderRadius: "5px",
+                  borderRadius: "10px",
                 }}
               ></Image>
 
@@ -112,8 +112,8 @@ function Products({}: Props) {
                 alt={selectedProduct.title}
                 style={{
                   width: "100%",
-                  height: "250px",
-                  objectFit: "cover",
+                  height: "200px",
+                  objectFit: "contain",
                   borderRadius: "8px",
                   marginBottom: "15px",
                 }}
