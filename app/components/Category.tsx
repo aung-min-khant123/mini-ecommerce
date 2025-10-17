@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelectedCategory } from "../services/productSlice";
 import { Grid3x3 } from "@mui/icons-material";
 
+
+
 type CategoryType = {
   name: string;
   slug: string;
@@ -33,6 +35,8 @@ function Category({ category, index }: CategoryProps) {
   } = useGetProductByCategoryQuery(selectedCategory);
   const isActive = selectedCategory === category.slug;
   // console.log("ppp>>>", products?.products[0])
+
+
   return (
     <>
       <Grid

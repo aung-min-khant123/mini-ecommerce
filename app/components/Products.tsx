@@ -42,6 +42,8 @@ function Products({}: Props) {
 
   const handleAdd = () => setQuantity((prev) => prev + 1);
   const handleRemove = () => setQuantity((prev) => (prev > 0 ? prev - 1 : 1));
+
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 375;
   return (
     <>
       <Grid container spacing={2} sx={{ justifyContent: "center", my: 4 }}>
@@ -71,18 +73,20 @@ function Products({}: Props) {
                 width={500}
                 height={500}
                 style={{
-                  width: "100%",
+                  width: '100%',
                   height: "150px",
                   objectFit: "cover",
-                  marginBottom: "10px",
+                  marginBottom: "5px",
                   borderRadius: "5px",
                 }}
               ></Image>
 
-              <Typography variant="body1" fontWeight="bold">
+              <Typography fontWeight="bold">
                 {product.title}
               </Typography>
-              <Typography variant="body2" color="black">
+              <Typography color="black" sx={{
+                margin: '0px',
+              }}>
                 ${product.price}
               </Typography>
             </Box>
@@ -93,14 +97,15 @@ function Products({}: Props) {
         <Box
           sx={{
             position: "absolute",
-            top: "35%",
+            top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             bgcolor: "lightgray",
             p: 4,
             borderRadius: "15px",
             boxShadow: 16,
-            width: "100%",
+            width: { xs: "50%", sm: "70%", md: "100%" },
+            height: { xs: "50%", sm: "auto", md: "auto" },
             maxWidth: 500,
             textAlign: "center",
           }}
@@ -111,17 +116,22 @@ function Products({}: Props) {
                 src={selectedProduct.thumbnail}
                 alt={selectedProduct.title}
                 style={{
-                  width: "100%",
-                  height: "250px",
+                  width: isMobile ? "100%" : "50%",
+                  height: "50%",
                   objectFit: "cover",
                   borderRadius: "8px",
                   marginBottom: "15px",
                 }}
               />
-              <Typography variant="h4" fontWeight="bold" mb={2}>
+              <Typography fontWeight="bold" sx={{
+                fontSize: { xs: '16px', sm: '20px', md: '25px' },
+                marginBottom: { xs: '13px', sm: '15px', md: '20px' }
+              }}>
                 {selectedProduct.title}
               </Typography>
-              <Typography variant="h6" color="black" mb={2}>
+              <Typography variant="h6" color="black" sx={{
+                marginBottom: { xs: '4px', sm: '15px', md: '20px' }
+              }}>
                 ${selectedProduct.price}
               </Typography>
 
@@ -129,12 +139,12 @@ function Products({}: Props) {
                 display="flex"
                 justifyContent="center"
                 alignItems="center"
-                mb={3}
+                sx={{ mb: { xs: '0px', sm: 3, md: 4 } }}
               >
                 <IconButton onClick={handleRemove}>
                   <RemoveIcon />
                 </IconButton>
-                <Typography variant="subtitle2" mx={2}>
+                <Typography variant="subtitle2">
                   {quantity}
                 </Typography>
                 <IconButton onClick={handleAdd}>
@@ -145,7 +155,10 @@ function Products({}: Props) {
                 variant="outlined"
                 color="success"
                 startIcon={<ShoppingCartIcon />}
-                sx={{ fontWeight: "bold" }}
+                sx={{ 
+                  fontWeight: "bold",
+                  fontSize: { xs: '10px', sm: '12px', md: '14px'}
+                 }}
               >
                 Add to your cart
               </Button>
