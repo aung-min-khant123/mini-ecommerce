@@ -7,33 +7,33 @@ export const carouselImages = [
 
 export const categories = [
   {
-      title: "Grocery",
+    //   title: "Grocery",
+      image: "/categories/cosmetics.png",
+      
+  },
+  {
+    //   title: "Food & Drinks",
+      image: "/categories/perfume.png",
+      
+  },
+  {
+    //   title: "Office Elements",
+      image: "/categories/furnishing.png",
+      
+  },
+  {
+    //   title: "Home Appliance",
       image: "/categories/groceries.png",
       
   },
   {
-      title: "Food & Drinks",
-      image: "/categories/fast-food.png",
-      
-  },
-  {
-      title: "Office Elements",
-      image: "/categories/web.png",
-      
-  },
-  {
-      title: "Home Appliance",
+    //   title: "Beauty Products",
       image: "/categories/home-appliance.png",
       
   },
   {
-      title: "Beauty Products",
-      image: "/categories/skincare.png",
-      
-  },
-  {
-      title: "Home Furnishings",
-      image: "/categories/furnishing.png",
+    //   title: "Home Furnishings",
+      image: "/categories/kitchen.png",
      
   }
 ]

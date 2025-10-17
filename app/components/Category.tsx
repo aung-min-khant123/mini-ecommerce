@@ -39,15 +39,15 @@ function Category({ category, index }: CategoryProps) {
       <Grid
         onClick={() => dispatch(setSelectedCategory(category.slug))}
         size={{ xs: 6, md: 2, sm: 4 }}
-        sx={{ background: isActive ? "lightgray" : "skyblue",position:"relative",
+        sx={{ background: isActive ? "lightgray" : "light",position:"relative",border:"0.5px solid black",
           "&::before":{
             content:"''",
             display: isActive? "block" : "none",
             border: "25px solid transparent",
-            borderTopColor: isActive ? "lightgray" : "skyblue",
+            borderTopColor: isActive ? "lightgray" : "light",
             position:"absolute",
-            bottom: "-2.5rem",
-            left: "35%"
+            bottom: "-2.6rem",
+            left: "35%",
             // transform: "rotate(45deg)"
           }
          }}
@@ -55,13 +55,13 @@ function Category({ category, index }: CategoryProps) {
       >
         <Box display="flex" flexDirection="column" alignItems="center" p={3}>
           <Image
-            src={categories}
+            src={category.image}
             alt={category.name}
             width={500}
             height={500}
             style={{ width:"80px", height:"80px",objectFit: "contain", marginBottom: 8 }}
           />
-          <Typography>{category.name}</Typography>
+          <Typography style={{color: "brown", fontFamily:"fantasy", fontWeight:"bold",}}>{category.name}</Typography>
         </Box>
       </Grid>
     </>

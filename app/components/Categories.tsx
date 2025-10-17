@@ -3,6 +3,7 @@ import React from "react";
 import Category from "./Category";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useGetCategoriesQuery } from "../services/api";
+import { categories  } from "../data/dummyData/data";
 
 
 type CategoryType = {
@@ -12,8 +13,16 @@ type CategoryType = {
 };
 
 function Categories() {
+
   const { data, isError, isLoading } = useGetCategoriesQuery(null);
-  console.log(data?.slice(0, 6));
+  const combined: CategoryType[] | undefined = data?.slice(0, 6).map((category: any, idx: number) => {
+    const image = categories[idx]?.image || "";
+    return {
+      ...category,
+      image,
+    };
+  });
+  console.log(combined)
 
   return (
     <>
@@ -21,15 +30,11 @@ function Categories() {
         {isLoading && <Typography>Loading...</Typography>}
         {isError && <Typography>Error occured.</Typography>}
         <Grid container spacing={2}>
-          {
-
-            data?.slice(0, 6).map((category: CategoryType, index: number) => {
-              return (
-                <React.Fragment key={index}>
-                  <Category category={category} index={index} />
-                </React.Fragment>
-              );
-            })}
+          {combined?.map((category: CategoryType, index: number) => (
+            <React.Fragment key={index}>
+              <Category category={category} index={index} />
+            </React.Fragment>
+          ))}
         </Grid>
       </Container>
     </>

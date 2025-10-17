@@ -79,7 +79,7 @@ function Products({}: Props) {
                 }}
               ></Image>
 
-              <Typography variant="body1" fontWeight="bold">
+              <Typography variant="overline" fontWeight="bold">
                 {product.title}
               </Typography>
               <Typography variant="body2" color="black">
@@ -98,10 +98,10 @@ function Products({}: Props) {
             transform: "translate(-50%, -50%)",
             bgcolor: "lightgray",
             p: 4,
-            borderRadius: "15px",
-            boxShadow: 16,
-            width: "100%",
-            maxWidth: 500,
+            borderRadius: "40px",
+            boxShadow: 20,
+            width: "90%",
+            maxWidth: 450,
             textAlign: "center",
           }}
         >
