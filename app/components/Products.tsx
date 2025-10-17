@@ -82,6 +82,15 @@ function Products({}: Props) {
               ></Image>
 
               <Typography fontWeight="bold">
+{/* =======
+                  objectFit: "contain",
+                  marginBottom: "10px",
+                  borderRadius: "10px",
+                }}
+              ></Image>
+
+              <Typography variant="overline" fontWeight="bold">
+>>>>>>> 2c4670c1f441069a065eba7c55830fa3ba0c6db1 */}
                 {product.title}
               </Typography>
               <Typography color="black" sx={{
@@ -107,6 +116,12 @@ function Products({}: Props) {
             width: { xs: "50%", sm: "70%", md: "100%" },
             height: { xs: "50%", sm: "auto", md: "auto" },
             maxWidth: 500,
+// =======
+//             borderRadius: "40px",
+//             boxShadow: 20,
+//             width: "90%",
+//             maxWidth: 450,
+// >>>>>>> 2c4670c1f441069a065eba7c55830fa3ba0c6db1
             textAlign: "center",
           }}
         >
@@ -119,6 +134,11 @@ function Products({}: Props) {
                   width: isMobile ? "100%" : "50%",
                   height: "50%",
                   objectFit: "cover",
+// =======
+//                   width: "100%",
+//                   height: "200px",
+//                   objectFit: "contain",
+// >>>>>>> 2c4670c1f441069a065eba7c55830fa3ba0c6db1
                   borderRadius: "8px",
                   marginBottom: "15px",
                 }}

@@ -7,6 +7,7 @@ export const carouselImages = [
 
 export const categories = [
   {
+
       id: 0,  
       title: "Grocery",
       image: "/categories/groceries.png",

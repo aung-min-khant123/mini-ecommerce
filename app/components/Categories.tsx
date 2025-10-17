@@ -5,6 +5,8 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 import { useGetCategoriesQuery } from "../services/api";
 import { categories } from "../data/dummyData/data";
 
+// import { categories  } from "../data/dummyData/data";
+
 type CategoryApiItem = {
   slug: string;
   name: string;
@@ -23,6 +25,7 @@ interface Photo {
 }
 
 function Categories() {
+
   const { data, isError, isLoading } = useGetCategoriesQuery(null);
   console.log("categories>>>", data);
 
@@ -35,12 +38,23 @@ function Categories() {
       return { ...category, image: image?.image || "" };
     });
 
+  // const combined: CategoryType[] | undefined = data?.slice(0, 6).map((category: any, idx: number) => {
+  //   const image = categories[idx]?.image || "";
+  //   return {
+  //     ...category,
+  //     image,
+  //   };
+  // });
+  // console.log(combined)
+
+
   return (
     <>
       <Container maxWidth={"lg"} sx={{ mt: 6 }}>
         {isLoading && <Typography>Loading...</Typography>}
         {isError && <Typography>Error occured.</Typography>}
         <Grid container spacing={2}>
+
           {combined?.map((category, index) => {
             return (
               <React.Fragment key={index}>
@@ -48,6 +62,13 @@ function Categories() {
               </React.Fragment>
             );
           })}
+
+          {/* {combined?.map((category: CategoryType, index: number) => (
+            <React.Fragment key={index}>
+              <Category category={category} index={index} />
+            </React.Fragment>
+          ))} */
+          }
         </Grid>
       </Container>
     </>
