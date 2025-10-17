@@ -7,6 +7,9 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedCategory } from "../services/productSlice";
 import { Grid3x3 } from "@mui/icons-material";
+import Categories from "./Categories";
+
+
 
 type CategoryType = {
   name: string;
@@ -33,20 +36,22 @@ function Category({ category, index }: CategoryProps) {
   } = useGetProductByCategoryQuery(selectedCategory);
   const isActive = selectedCategory === category.slug;
   // console.log("ppp>>>", products?.products[0])
+
+
   return (
     <>
       <Grid
         onClick={() => dispatch(setSelectedCategory(category.slug))}
         size={{ xs: 6, md: 2, sm: 4 }}
-        sx={{ background: isActive ? "lightgray" : "skyblue",position:"relative",
+        sx={{ background: isActive ? "lightgray" : "light",position:"relative",border:"0.5px solid black",
           "&::before":{
             content:"''",
             display: isActive? "block" : "none",
             border: "25px solid transparent",
-            borderTopColor: isActive ? "lightgray" : "skyblue",
+            borderTopColor: isActive ? "lightgray" : "light",
             position:"absolute",
-            bottom: "-26%",
-            left: "35%"
+            bottom: "-2.6rem",
+            left: "35%",
             // transform: "rotate(45deg)"
           }
          }}
@@ -60,7 +65,7 @@ function Category({ category, index }: CategoryProps) {
             height={500}
             style={{ width:"80px", height:"80px",objectFit: "contain", marginBottom: 8 }}
           />
-          <Typography>{category.name}</Typography>
+          <Typography style={{color: "brown", fontFamily:"fantasy", fontWeight:"bold",}}>{category.name}</Typography>
         </Box>
       </Grid>
     </>
