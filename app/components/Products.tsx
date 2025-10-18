@@ -14,6 +14,8 @@ import Image from "next/image";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useSearchParams, useRouter } from "next/navigation";
+
 
 type Props = {};
 
@@ -29,10 +31,16 @@ function Products({}: Props) {
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [quantity, setQuantity] = useState(0);
 
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const queryParamValue = searchParams.get("product-detail");
+  console.log("params", queryParamValue);
+
   const handleOpen = (product: any) => {
     setSelectedProduct(product);
     setQuantity(0);
     setOpen(true);
+    router.push(`?product-detail=${product?.id}`);
   };
 
   const handleClose = () => {
