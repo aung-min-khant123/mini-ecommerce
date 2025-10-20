@@ -10,37 +10,37 @@ export const categories = [
 
       id: 0,  
       title: "Grocery",
-      image: "/categories/groceries.png",
+      image: "/categories/cosmetics.png",
       
   },
   {
       id: 1,
       title: "Food & Drinks",
-      image: "/categories/fast-food.png",
+      image: "/categories/perfume.png",
       
   },
   {
       id: 2,
       title: "Office Elements",
-      image: "/categories/web.png",
+      image: "/categories/home-appliance.png",
       
   },
   {
       id: 3,
       title: "Home Appliance",
-      image: "/categories/home-appliance.png",
+      image: "/categories/groceries.png",
       
   },
   {
       id: 4,
       title: "Beauty Products",
-      image: "/categories/skincare.png",
+      image: "/categories/furnishing.png",
       
   },
   {
       id: 5,
       title: "Home Furnishings",
-      image: "/categories/furnishing.png",
+      image: "/categories/kitchen.png",
      
   }
 ]
