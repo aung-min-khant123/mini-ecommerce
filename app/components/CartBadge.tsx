@@ -1,11 +1,11 @@
-import { IconButton } from '@mui/material'
-import React from 'react'
+import * as React from 'react'
+import { Badge } from "@mui/material";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-function CartBadge() {
-  return (
-    <>
-    </>
-  )
+export default function CartBadge(){
+    return(
+        <Badge badgeContent={4} color= 'warning'>
+            <ShoppingCartIcon color="action" sx={{color: "#fff"}}/>
+        </Badge>
+    );
 }
-
-export default CartBadge

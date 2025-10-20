@@ -63,3 +63,42 @@ export const categories = [
     image: "/categories/kitchen.png",
   },
 ];
+// =======
+
+//       id: 0,  
+//       title: "Grocery",
+//       image: "/categories/cosmetics.png",
+      
+//   },
+//   {
+//       id: 1,
+//       title: "Food & Drinks",
+//       image: "/categories/perfume.png",
+      
+//   },
+//   {
+//       id: 2,
+//       title: "Office Elements",
+//       image: "/categories/home-appliance.png",
+      
+//   },
+//   {
+//       id: 3,
+//       title: "Home Appliance",
+//       image: "/categories/groceries.png",
+      
+//   },
+//   {
+//       id: 4,
+//       title: "Beauty Products",
+//       image: "/categories/furnishing.png",
+      
+//   },
+//   {
+//       id: 5,
+//       title: "Home Furnishings",
+//       image: "/categories/kitchen.png",
+     
+//   }
+// ]
+// >>>>>>> 3b4d10f067f30af9d398170ac526027e724ed641

@@ -35,14 +35,18 @@ function Products({}: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const queryParamValue = searchParams.get("product-detail");
-  console.log("queryParamValue>>>", queryParamValue);
+
+  console.log("params", queryParamValue);
 
   const handleOpen = (product: any) => {
     setSelectedProduct(product);
     setQuantity(0);
     setOpen(true);
-    router.push(`/productDetails/${product.id}`);
-  };
+  
+    router.push(`/productDetails/${product?.id}`);
+
+    // router.push(`?product-detail=${product?.id}`);
+  }
 
   const handleClose = () => {
     setOpen(false);
@@ -196,7 +200,7 @@ function Products({}: Props) {
         </Box>
       </Modal> */}
     </>
-  );
-}
+    );
+  }
 
 export default Products;
