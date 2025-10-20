@@ -14,7 +14,6 @@ type CategoryApiItem = {
 
 interface LocalCategory {
   id: number;
-  title: string;
   image?: string;
 }
 

@@ -8,16 +8,19 @@ import {
   Button,
 } from "@mui/material";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useGetProductByCategoryQuery } from "../services/api";
 import Image from "next/image";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useSearchParams, useRouter } from "next/navigation";
+import { setSelectedProductType } from "../services/productSlice";
 
 type Props = {};
 
 function Products({}: Props) {
+  const dispatch = useDispatch();
   const { selectedCategory } = useSelector((state: any) => state.products);
   const {
     data: products,
@@ -29,10 +32,16 @@ function Products({}: Props) {
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [quantity, setQuantity] = useState(0);
 
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const queryParamValue = searchParams.get("product-detail");
+  console.log("queryParamValue>>>", queryParamValue);
+
   const handleOpen = (product: any) => {
     setSelectedProduct(product);
     setQuantity(0);
     setOpen(true);
+    router.push(`/productDetails/${product.id}`);
   };
 
   const handleClose = () => {
@@ -65,7 +74,7 @@ function Products({}: Props) {
                 },
                 cursor: "pointer",
               }}
-              onClick={() => handleOpen(product)}
+              onClick={() => {dispatch(setSelectedProductType(product)), handleOpen(product)}}
             >
               <Image
                 src={product?.thumbnail}
@@ -102,7 +111,7 @@ function Products({}: Props) {
           </Grid>
         ))}
       </Grid>
-      <Modal open={open} onClose={handleClose}>
+      {/* <Modal open={open} onClose={handleClose}>
         <Box
           sx={{
             position: "absolute",
@@ -185,7 +194,7 @@ function Products({}: Props) {
             </>
           )}
         </Box>
-      </Modal>
+      </Modal> */}
     </>
   );
 }

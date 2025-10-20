@@ -6,6 +6,7 @@ export const productSlice = createSlice ({
     initialState: {
         showProducts: false,
         selectedCategory: 'beauty',
+        selectedProductType: null,
     },
     reducers : {
         toggleProducts: (state) => {
@@ -13,9 +14,12 @@ export const productSlice = createSlice ({
         },
         setSelectedCategory: (state, action) => {
             state.selectedCategory = action.payload
+        },
+        setSelectedProductType: (state, action) => {
+            state.selectedProductType = action.payload
         }
     },
 });
 
-export const { toggleProducts, setSelectedCategory} = productSlice.actions;
+export const { toggleProducts, setSelectedCategory, setSelectedProductType} = productSlice.actions;
 export default productSlice.reducer;
