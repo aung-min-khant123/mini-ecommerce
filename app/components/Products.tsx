@@ -47,15 +47,7 @@ function Products({}: Props) {
   return (
     <>
       <Container maxWidth={"lg"} sx={{ mt: 6 }}>
-        <Grid
-          container
-          spacing={2}
-          sx={{
-            my: 4,
-            justifyContent: { xs: "center", md: "normal" },
-            alignItems: { xs: "center", md: "normal"},
-          }}
-        >
+        <Grid container spacing={2} sx={{  my: 4 }}>
           {products?.products?.map((product: any, index: number) => (
             <React.Fragment key={index}>
               <Product product={product} />
@@ -68,3 +60,4 @@ function Products({}: Props) {
 }
 
 export default Products;
+               

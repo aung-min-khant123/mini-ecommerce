@@ -1,5 +1,4 @@
 "use client";
-
 import React from 'react'
 import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
@@ -165,9 +164,8 @@ function ProductDetails() {
                     color: 'white',
                 }}>Add to cart</button>
             </Box>
-        </Box>
+       </Box>
     </>
   );
-}
-
+};
 export default ProductDetails;

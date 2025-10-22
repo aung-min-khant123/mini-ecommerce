@@ -37,6 +37,7 @@ export default function Cart() {
   console.log(taxRate);
   const shippingFee = 9;
   const totalPrice = subTotal + taxRate + shippingFee;
+
   return (
     <Box
       sx={{ p: { xs: 2, md: 6 }, backgroundColor: "#fff", minHeight: "100vh" }}
@@ -47,7 +48,6 @@ export default function Cart() {
       <Typography color="text.secondary" sx={{ mb: 3 }}>
         Review your items before checkout
       </Typography>
-
       <Grid container>
         <Grid size={{ md: 8, xs: 12 }}>
           <Typography variant="subtitle1" fontWeight={700} sx={{ mb: 2 }}>
@@ -55,17 +55,17 @@ export default function Cart() {
           </Typography>
           <Grid>
             <Stack mt={3}>
-              <Paper 
+              <Paper
                 variant="outlined"
                 sx={{
-                  display: { xs: "flex"},
+                  display: { xs: "flex" },
                   p: 2,
                   borderRadius: 3,
-                  width: {xs: "100%", sm: "100%", md: "90%"}
-                
+
+                  width: { xs: "100%", sm: "100%", md: "90%" },
+
                   // alignItems: {xs: "center"},
                   // justifyContent: {xs: "center"}
-                  
                 }}
               >
                 <Grid
@@ -104,71 +104,73 @@ export default function Cart() {
               </Paper>
             </Stack>
           </Grid>
+
         </Grid>
+         <Grid size={{ xs: 12, md: 4, sm: 12 }}> 
+              <Paper sx={{ p: 3, borderRadius: 3 }}>
+                <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
+                  Order Summary
+                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    mb: 1,
+                  }}
+                >
+                  <Typography color="text.secondary">
+                    Subtotal( {items.length})
+                  </Typography>
+                  <Typography fontWeight={700}>
+                    ${subTotal.toFixed(2)}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    mb: 1,
+                  }}
+                >
+                  <Typography color="text.secondary">Shipping</Typography>
+                  <Typography>${shippingFee}</Typography>
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    mb: 2,
+                  }}
+                >
+                  <Typography color="text.secondary">Tax</Typography>
+                  <Typography>${taxRate.toFixed(2)}</Typography>
+                </Box>
 
-        <Grid size={{ xs: 12, md: 4, sm: 12 }}>
-          <Paper sx={{ p: 3, borderRadius: 3 }}>
-            <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
-              Order Summary
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                mb: 1,
-              }}
-            >
-              <Typography color="text.secondary">
-                Subtotal( {items.length})
-              </Typography>
-              <Typography fontWeight={700}>${subTotal.toFixed(2)}</Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                mb: 1,
-              }}
-            >
-              <Typography color="text.secondary">Shipping</Typography>
-              <Typography>${shippingFee}</Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                mb: 2,
-              }}
-            >
-              <Typography color="text.secondary">Tax</Typography>
-              <Typography>${taxRate.toFixed(2)}</Typography>
-            </Box>
+                <Divider sx={{ mb: 2 }} />
 
-            <Divider sx={{ mb: 2 }} />
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    mb: 2,
+                  }}
+                >
+                  <Typography variant="subtitle1" fontWeight={700}>
+                    Total
+                  </Typography>
+                  <Typography variant="h6" color="primary" fontWeight={700}>
+                    ${totalPrice.toFixed(2)}
+                  </Typography>
+                </Box>
 
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                mb: 2,
-              }}
-            >
-              <Typography variant="subtitle1" fontWeight={700}>
-                Total
-              </Typography>
-              <Typography variant="h6" color="primary" fontWeight={700}>
-                ${totalPrice.toFixed(2)}
-              </Typography>
-            </Box>
-
-            <Button fullWidth variant="contained" sx={{ mb: 1, py: 1.5 }}>
-              Proceed to Checkout
-            </Button>
-            <Button fullWidth variant="outlined" sx={{ py: 1.5 }}>
-              Continue Shopping
-            </Button>
-          </Paper>
-        </Grid>
+                <Button fullWidth variant="contained" sx={{ mb: 1, py: 1.5 }}>
+                  Proceed to Checkout
+                </Button>
+                <Button fullWidth variant="outlined" sx={{ py: 1.5 }}>
+                  Continue Shopping
+                </Button>
+              </Paper>
+             </Grid> 
       </Grid>
     </Box>
   );
