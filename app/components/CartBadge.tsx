@@ -1,11 +1,16 @@
-import * as React from 'react'
+import * as React from "react";
 import { Badge } from "@mui/material";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useSelector } from "react-redux";
+import Link from "next/link";
 
-export default function CartBadge(){
-    return(
-        <Badge badgeContent={4} color= 'warning'>
-            <ShoppingCartIcon color="action" sx={{color: "#fff"}}/>
-        </Badge>
-    );
+export default function CartBadge() {
+  const { totalQuantity } = useSelector((state: any) => state.cart);
+  return (
+    <Link href="/cart">
+      <Badge badgeContent={totalQuantity} color="warning">
+        <ShoppingCartIcon color="action" sx={{ color: "#fff" }} />
+      </Badge>
+    </Link>
+  );
 }

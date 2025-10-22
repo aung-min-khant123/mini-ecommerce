@@ -17,6 +17,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useSearchParams, useRouter } from "next/navigation";
 import { setSelectedProductType } from "../services/productSlice";
+import Product from "./Product";
 
 type Props = {};
 
@@ -29,98 +30,29 @@ function Products({}: Props) {
     isError,
   } = useGetProductByCategoryQuery(selectedCategory);
 
-  const [open, setOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
-  const [quantity, setQuantity] = useState(0);
-
   const router = useRouter();
   const searchParams = useSearchParams();
   const queryParamValue = searchParams.get("product-detail");
 
   console.log("params", queryParamValue);
 
-  const handleOpen = (product: any) => {
-    setSelectedProduct(product);
-    setQuantity(0);
-    setOpen(true);
+  // const handleOpen = (product: any) => {
+  //   setSelectedProduct(product);
+  //   setQuantity(0);
+  //   setOpen(true);
 
-    router.push(`/productDetails/${product?.id}`);
+  //   router.push(`/productDetails/${product?.id}`);
+  // };
 
-    // router.push(`?product-detail=${product?.id}`);
-  };
 
-  const handleClose = () => {
-    setOpen(false);
-    setSelectedProduct(null);
-  };
-
-  const handleAdd = () => setQuantity((prev) => prev + 1);
-  const handleRemove = () => setQuantity((prev) => (prev > 0 ? prev - 1 : 1));
-
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 375;
   return (
     <>
       <Container maxWidth={"lg"} sx={{ mt: 6 }}>
         <Grid container spacing={2} sx={{  my: 4 }}>
-          {products?.products?.map((product: any) => (
-            <Grid
-              size={{ xs: 6, md: 3, sm: 4 }}
-              key={product.id}
-              sx={{
-                cursor: "pointer",
-                border: "1px solid #2d2d2d",
-                width: isMobile ? "150px" : "300px",
-                transition: "transform 0.2s ease",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                  backgroundColor: "#f0f0f0",
-                },
-              }}
-            >
-              <Box
-                p={2}
-                borderRadius="5px"
-                textAlign="center"
-                display="flex"
-                sx={{
-                  flexDirection: "column",
-                }}
-                onClick={() => {
-                  dispatch(setSelectedProductType(product)),
-                    handleOpen(product);
-                }}
-              >
-                <Image
-                  src={product?.thumbnail}
-                  alt={product?.title}
-                  width={500}
-                  height={500}
-                  style={{
-                    width: "100%",
-                    height: "150px",
-                    objectFit: "contain",
-                    marginBottom: "5px",
-                    borderRadius: "5px",
-                    flexBasis: "60%",
-                  }}
-                ></Image>
-                <Box
-                  sx={{
-                    flexBasis: "40%",
-                  }}
-                >
-                  <Typography fontWeight="bold">{product?.title}</Typography>
-                  <Typography
-                    color="black"
-                    sx={{
-                      margin: "0px",
-                    }}
-                  >
-                    ${product?.price}
-                  </Typography>
-                </Box>
-              </Box>
-            </Grid>
+          {products?.products?.map((product: any, index: number) => (
+            <React.Fragment key={index}>
+              <Product product={product} />
+            </React.Fragment>
           ))}
         </Grid>
       </Container>
