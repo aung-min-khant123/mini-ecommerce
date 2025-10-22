@@ -59,7 +59,7 @@ function Products({}: Props) {
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 375;
   return (
     <>
-      <Grid container spacing={2} sx={{ justifyContent: "center", my: 4 }}>
+       <Grid container spacing={2} sx={{ justifyContent: "center",mt: 3, p: 2, }}>
         {products?.products?.map((product: any) => (
           <Grid
             size={{ xs: 6, md: 2, sm: 4 }}
@@ -88,7 +88,7 @@ function Products({}: Props) {
                 style={{
                   width: '100%',
                   height: "150px",
-                  objectFit: "cover",
+                  objectFit: "contain",
                   marginBottom: "5px",
                   borderRadius: "5px",
                 }}
