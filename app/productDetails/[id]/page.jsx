@@ -59,11 +59,11 @@ function ProductDetails() {
                 <h1 style={{
                     marginLeft: '25%',
                     padding: '0px',
-                }}>{selectedProductType.title}</h1>
+                }}>{selectedProductType?.title}</h1>
                 <p style={{
                     padding: '0px',
                     marginLeft: '25%',
-                }}>{selectedProductType.category}</p>
+                }}>{selectedProductType?.category}</p>
                 <h3 style={{
                     marginTop: '-20px',
                     marginLeft: '25%',

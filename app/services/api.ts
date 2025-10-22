@@ -8,9 +8,12 @@ export const api = createApi({
       query: () => "/products/categories",
     }),
     getProductByCategory: builder.query({
-        query: (slug: string) => `/products/category/${slug}`
-    })
+      query: (slug: string) => `/products/category/${slug}`,
+    }),
+    getProductById: builder.query({
+      query: (id: string | number) => `/products/${id}`,
+    }),
   }),
 });
 
-export const { useGetCategoriesQuery, useGetProductByCategoryQuery } = api;
+export const { useGetCategoriesQuery, useGetProductByCategoryQuery, useGetProductByIdQuery } = api;

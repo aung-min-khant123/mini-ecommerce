@@ -16,6 +16,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useSearchParams, useRouter } from "next/navigation";
 import { setSelectedProductType } from "../services/productSlice";
+import { addToCart } from "../services/cartSlice";
 
 type Props = {};
 
@@ -42,11 +43,11 @@ function Products({}: Props) {
     setSelectedProduct(product);
     setQuantity(0);
     setOpen(true);
-  
+
     router.push(`/productDetails/${product?.id}`);
 
     // router.push(`?product-detail=${product?.id}`);
-  }
+  };
 
   const handleClose = () => {
     setOpen(false);
@@ -78,7 +79,9 @@ function Products({}: Props) {
                 },
                 cursor: "pointer",
               }}
-              onClick={() => {dispatch(setSelectedProductType(product)), handleOpen(product)}}
+              onClick={() => {
+                dispatch(setSelectedProductType(product)), handleOpen(product);
+              }}
             >
               <Image
                 src={product?.thumbnail}
@@ -86,7 +89,7 @@ function Products({}: Props) {
                 width={500}
                 height={500}
                 style={{
-                  width: '100%',
+                  width: "100%",
                   height: "150px",
                   objectFit: "cover",
                   marginBottom: "5px",
@@ -95,7 +98,7 @@ function Products({}: Props) {
               ></Image>
 
               <Typography fontWeight="bold">
-{/* =======
+                {/* =======
                   objectFit: "contain",
                   marginBottom: "10px",
                   borderRadius: "10px",
@@ -106,12 +109,25 @@ function Products({}: Props) {
 >>>>>>> 2c4670c1f441069a065eba7c55830fa3ba0c6db1 */}
                 {product.title}
               </Typography>
-              <Typography color="black" sx={{
-                margin: '0px',
-              }}>
+              <Typography
+                color="black"
+                sx={{
+                  margin: "0px",
+                }}
+              >
                 ${product.price}
               </Typography>
             </Box>
+            <Button
+              size="small"
+              variant="outlined"
+              sx={{ mt: 2 }}
+              onClick={() => {
+                dispatch(addToCart(product));
+              }}
+            >
+              Add to cart
+            </Button>
           </Grid>
         ))}
       </Grid>
@@ -200,7 +216,7 @@ function Products({}: Props) {
         </Box>
       </Modal> */}
     </>
-    );
-  }
+  );
+}
 
 export default Products;
