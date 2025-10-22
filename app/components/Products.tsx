@@ -43,11 +43,11 @@ function Products({}: Props) {
     setSelectedProduct(product);
     setQuantity(0);
     setOpen(true);
-  
+
     router.push(`/productDetails/${product?.id}`);
 
     // router.push(`?product-detail=${product?.id}`);
-  }
+  };
 
   const handleClose = () => {
     setOpen(false);
@@ -61,70 +61,71 @@ function Products({}: Props) {
   return (
     <>
       <Container maxWidth={"lg"} sx={{ mt: 6 }}>
-        <Grid container spacing={2} 
-        sx={{ 
-          // justifyContent: "center", 
-          my: 4,
-          width: '100%'
-        }}>
-        {products?.products?.map((product: any) => (
-          <Grid
-            size={{ xs: 6, md: 3, sm: 4 }}
-            key={product.id}
-            sx={{
-              cursor: "pointer", 
-              border: "1px solid #2d2d2d",
-              width: isMobile ? '150px' : '300px',
-              transition: "transform 0.2s ease",
-              "&:hover": {
-                transform: "scale(1.05)",
-                backgroundColor: "#f0f0f0",
-              },
-             }}
-          >
-            <Box
-              p={2}
-              borderRadius="5px"
-              textAlign="center"
-              display="flex"
+        <Grid container spacing={2} sx={{  my: 4 }}>
+          {products?.products?.map((product: any) => (
+            <Grid
+              size={{ xs: 6, md: 3, sm: 4 }}
+              key={product.id}
               sx={{
-                flexDirection: "column",
+                cursor: "pointer",
+                border: "1px solid #2d2d2d",
+                width: isMobile ? "150px" : "300px",
+                transition: "transform 0.2s ease",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                  backgroundColor: "#f0f0f0",
+                },
               }}
-              onClick={() => {dispatch(setSelectedProductType(product)), handleOpen(product)}}
             >
-              <Image
-                src={product?.thumbnail}
-                alt={product?.title}
-                width={500}
-                height={500}
-                style={{
-                  width: '100%',
-                  height: "150px",
-                  objectFit: "cover",
-                  marginBottom: "5px",
-                  borderRadius: "5px",
-                  flexBasis: '60%',
+              <Box
+                p={2}
+                borderRadius="5px"
+                textAlign="center"
+                display="flex"
+                sx={{
+                  flexDirection: "column",
                 }}
-              ></Image>
-              <Box sx={{
-                flexBasis: '40%',
-              }}>
-                <Typography fontWeight="bold">
-                  {product?.title}
-                </Typography>
-                <Typography color="black" sx={{
-                  margin: '0px',
-                }}>
-                  ${product?.price}
-                </Typography>
+                onClick={() => {
+                  dispatch(setSelectedProductType(product)),
+                    handleOpen(product);
+                }}
+              >
+                <Image
+                  src={product?.thumbnail}
+                  alt={product?.title}
+                  width={500}
+                  height={500}
+                  style={{
+                    width: "100%",
+                    height: "150px",
+                    objectFit: "contain",
+                    marginBottom: "5px",
+                    borderRadius: "5px",
+                    flexBasis: "60%",
+                  }}
+                ></Image>
+                <Box
+                  sx={{
+                    flexBasis: "40%",
+                  }}
+                >
+                  <Typography fontWeight="bold">{product?.title}</Typography>
+                  <Typography
+                    color="black"
+                    sx={{
+                      margin: "0px",
+                    }}
+                  >
+                    ${product?.price}
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </>
-    );
-  }
+  );
+}
 
 export default Products;

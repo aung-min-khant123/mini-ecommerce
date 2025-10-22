@@ -167,7 +167,7 @@ function ProductDetails() {
             </Box>
         </Box>
     </>
-  )
+  );
 }
 
-export default ProductDetails
+export default ProductDetails;
