@@ -43,12 +43,12 @@ function Category({ category, index }: CategoryProps) {
       <Grid
         onClick={() => dispatch(setSelectedCategory(category.slug))}
         size={{ xs: 6, md: 2, sm: 4 }}
-        sx={{ background: isActive ? "lightgray" : "light",position:"relative",border:"0.5px solid black",
+        sx={{ background: isActive ? "#1976d2" : "light", position:"relative", border: isActive ? 'none' : "0.5px solid black",
           "&::before":{
             content:"''",
             display: isActive? "block" : "none",
             border: "25px solid transparent",
-            borderTopColor: isActive ? "lightgray" : "light",
+            borderTopColor: isActive ? "#1976d2" : "light",
             position:"absolute",
             bottom: "-2.6rem",
             left: "35%",
@@ -57,7 +57,11 @@ function Category({ category, index }: CategoryProps) {
          }}
 
       >
-        <Box display="flex" flexDirection="column" alignItems="center" p={3}>
+        <Box display="flex" flexDirection="column" alignItems="center" p={3} sx={{
+          justifyContent: "center",
+          alignItems: "center",
+          cursor: "pointer",
+        }}>
           <Image
             src={category.image}
             alt={category.name}
@@ -65,7 +69,16 @@ function Category({ category, index }: CategoryProps) {
             height={500}
             style={{ width:"80px", height:"80px",objectFit: "contain", marginBottom: 8 }}
           />
-          <Typography style={{color: "brown", fontFamily:"fantasy", fontWeight:"bold",}}>{category.name}</Typography>
+          <Typography style={{
+            color: isActive ? "white" : '#1976d2', 
+            fontFamily:"sans-serif", 
+            fontWeight: 'bold', 
+            letterSpacing: '2px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+          }}>{category.name}</Typography>
         </Box>
       </Grid>
     </>
