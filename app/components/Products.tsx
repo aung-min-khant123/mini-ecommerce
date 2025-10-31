@@ -44,11 +44,18 @@ function Products({}: Props) {
   //   router.push(`/productDetails/${product?.id}`);
   // };
 
-
   return (
     <>
       <Container maxWidth={"lg"} sx={{ mt: 6 }}>
-        <Grid container spacing={2} sx={{  my: 4 }}>
+        <Grid
+          container
+          spacing={2}
+          sx={{
+            my: 4,
+            justifyContent: { xs: "center", md: "normal" },
+            alignItems: { xs: "center", md: "normal"},
+          }}
+        >
           {products?.products?.map((product: any, index: number) => (
             <React.Fragment key={index}>
               <Product product={product} />

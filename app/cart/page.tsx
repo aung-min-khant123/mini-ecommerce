@@ -27,6 +27,16 @@ export default function Cart() {
   const handleRemove = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
   const handleStart = () => setQuantity((prev) => prev * 0);
   console.log("items>>", items);
+
+  const subTotal = items.reduce(
+    (acc: number, item: { price: number; quantity: number }) =>
+      acc + item.price * item.quantity,
+    0
+  );
+  const taxRate = subTotal * (10 / 100);
+  console.log(taxRate);
+  const shippingFee = 9;
+  const totalPrice = subTotal + taxRate + shippingFee;
   return (
     <Box
       sx={{ p: { xs: 2, md: 6 }, backgroundColor: "#fff", minHeight: "100vh" }}
@@ -38,34 +48,35 @@ export default function Cart() {
         Review your items before checkout
       </Typography>
 
-      <Grid container spacing={5}>
-        <Grid size={{ md: 8 }}>
-          <Paper sx={{ p: 3, borderRadius: 4, variant: "outlined" }}>
-            <Typography variant="subtitle1" fontWeight={700} sx={{ mb: 2 }}>
-              Cart Items {totalQuantity}
-            </Typography>
-
-            <Stack spacing={4}>
-              <Paper
+      <Grid container>
+        <Grid size={{ md: 8, xs: 12 }}>
+          <Typography variant="subtitle1" fontWeight={700} sx={{ mb: 2 }}>
+            Cart Items {totalQuantity}
+          </Typography>
+          <Grid>
+            <Stack mt={3}>
+              <Paper 
                 variant="outlined"
                 sx={{
+                  display: { xs: "flex"},
                   p: 2,
                   borderRadius: 3,
-                  display: "flex",
-                  alignItems: "center",
+                  width: {xs: "100%", sm: "100%", md: "90%"}
+                
+                  // alignItems: {xs: "center"},
+                  // justifyContent: {xs: "center"}
+                  
                 }}
               >
                 <Grid
                   sx={{
-                    display: { xs: "flex" },
-                    flexDirection: {
-                      xs: "column",
-                      md: "row",
-                      sm: "row",
-                    },
+                    display: { md: "flex" },
+                    flexDirection: { md: "column" },
+                    width: "100%",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    // backgroundColor: "red"
                     // justifyContent: {xs: "center"},
-                    alignItems: { xs: "center" },
-                    textAlign: { xs: "center" },
                   }}
                 >
                   {items.length === 0 ? (
@@ -74,7 +85,17 @@ export default function Cart() {
                     items.map((item: Product, index: number) => {
                       return (
                         <React.Fragment key={index}>
-                         <CartItem item={item} />
+                          <Grid
+                            sx={{
+                              display: { md: "flex", sm: "block" },
+                              alignItems: "center",
+                              justifyContent: "center",
+                              width: "100%",
+                              // backgroundColor: "red"
+                            }}
+                          >
+                            <CartItem item={item} />
+                          </Grid>
                         </React.Fragment>
                       );
                     })
@@ -82,10 +103,10 @@ export default function Cart() {
                 </Grid>
               </Paper>
             </Stack>
-          </Paper>
+          </Grid>
         </Grid>
 
-        <Grid size={{ xs: 12, md: 4, sm: 6 }}>
+        <Grid size={{ xs: 12, md: 4, sm: 12 }}>
           <Paper sx={{ p: 3, borderRadius: 3 }}>
             <Typography variant="h6" fontWeight={700} sx={{ mb: 2 }}>
               Order Summary
@@ -97,8 +118,10 @@ export default function Cart() {
                 mb: 1,
               }}
             >
-              <Typography color="text.secondary">Subtotal (3 items)</Typography>
-              <Typography fontWeight={700}>$535.00</Typography>
+              <Typography color="text.secondary">
+                Subtotal( {items.length})
+              </Typography>
+              <Typography fontWeight={700}>${subTotal.toFixed(2)}</Typography>
             </Box>
             <Box
               sx={{
@@ -108,7 +131,7 @@ export default function Cart() {
               }}
             >
               <Typography color="text.secondary">Shipping</Typography>
-              <Typography>$9.99</Typography>
+              <Typography>${shippingFee}</Typography>
             </Box>
             <Box
               sx={{
@@ -118,7 +141,7 @@ export default function Cart() {
               }}
             >
               <Typography color="text.secondary">Tax</Typography>
-              <Typography>$42.80</Typography>
+              <Typography>${taxRate.toFixed(2)}</Typography>
             </Box>
 
             <Divider sx={{ mb: 2 }} />
@@ -134,7 +157,7 @@ export default function Cart() {
                 Total
               </Typography>
               <Typography variant="h6" color="primary" fontWeight={700}>
-                $587.79
+                ${totalPrice.toFixed(2)}
               </Typography>
             </Box>
 
